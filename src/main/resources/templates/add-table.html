@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Table</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <header>
+        <h1>Add New Table</h1>
+    </header>
+    <form th:action="@{/admin/tables/add}" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <div>
+            <label for="tableType">Table Type:</label>
+            <select id="tableType" name="tableType" required>
+                <option value="Romantic">Romantic</option>
+                <option value="Family">Family</option>
+                <option value="Business">Business</option>
+            </select>
+        </div>
+        <div>
+            <label for="numberOfSeats">Number of Seats:</label>
+            <input type="number" id="numberOfSeats" name="numberOfSeats" required />
+        </div>
+        <div>
+            <label for="floorNumber">Floor Number:</label>
+            <input type="number" id="floorNumber" name="floorNumber" required />
+        </div>
+        <button type="submit">Add Table</button>
+    </form>
+</body>
+</html>

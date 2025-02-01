@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Reservations</title>
+    <link rel="stylesheet" th:href="@{/css/admin-reservations.css}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+    <a href="/home" class="logo">እንብላ</a>
+        <div class="container">
+            
+            <ul class="nav-links">
+                <li><a th:href="@{/admin/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/admin/tables}">Manage Tables</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="reservations-container">
+        <h1>View Reservations</h1>
+        <table class="reservations-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Seats</th>
+                    <th>Floor</th>
+                    <th>Date and Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="reservation : ${reservations}">
+                    <td th:text="${reservation.id}"></td>
+                    <td th:text="${reservation.reservationType}"></td>
+                    <td th:text="${reservation.numberOfSeats}"></td>
+                    <td th:text="${reservation.floorNumber}"></td>
+                    <td th:text="${reservation.reservationDateTime}"></td>
+                    <td th:text="${reservation.paymentStatus ? 'Paid' : 'Pending'}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/admin/dashboard}" class="btn btn-secondary">Back to Dashboard</a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Our Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+</html>

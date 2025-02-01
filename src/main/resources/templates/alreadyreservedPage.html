@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error - Our Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div class="error-section">
+        <h1>We are sorry to tell you the table you need is reserved by other customer.</h1>
+        <p th:text="${errorMessage}">An unexpected error occurred.</p>
+        <div class="links">    
+            <a th:href="@{/reservation}">Make a Reservation</a>
+        </div>
+    </div>
+    <footer>
+        © 2024 Our Restaurant. All rights reserved.
+    </footer>
+</body>
+</html>

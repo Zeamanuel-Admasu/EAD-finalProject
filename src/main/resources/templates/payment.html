@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Payment</title>
+    <script src="https://js.stripe.com/v3/"></script> <!-- Stripe.js -->
+    <link rel="stylesheet" th:href="@{/css/payment.css}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+    <a href="/home" class="logo">እንብላ</a>
+        <div class="container">
+            
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/reservation">Reservation</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Payment Section -->
+    <div class="payment-container">
+        <header>
+            <h1>Payment</h1>
+            <p>Complete your reservation payment securely below.</p>
+        </header>
+        <form id="payment-form" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input type="hidden" id="reservationId" name="reservationId" th:value="${reservationId}" />
+
+            <!-- Stripe Card Element -->
+            <div id="card-element" class="card-element"></div>
+            <div id="card-errors" role="alert" class="error-message"></div>
+
+            <button type="submit" id="submit-button" class="btn-primary">Pay Now</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Our Restaurant. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const stripe = Stripe('[[${stripePublishableKey}]]'); // Inject Stripe Publishable Key
+        const clientSecret = '[[${clientSecret}]]'; // Inject PaymentIntent clientSecret
+
+        const elements = stripe.elements();
+        const card = elements.create('card');
+        card.mount('#card-element');
+
+        const form = document.getElementById('payment-form');
+        const errorElement = document.getElementById('card-errors');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const reservationId = document.getElementById('reservationId').value;
+
+            if (!reservationId) {
+                alert("Reservation ID is missing. Please try again.");
+                return;
+            }
+
+            // Simulate payment success
+            alert("Payment Successful!");
+            window.location.href = `/confirmation?reservationId=${reservationId}`;
+        });
+
+    </script>
+</body>
+</html>

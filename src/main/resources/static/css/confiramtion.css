@@ -1,0 +1,126 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Navigation Bar */
+.main-nav {
+    background-color: #222;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+.main-nav .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff9800;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.nav-links li a:hover {
+    color: #ff9800;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Confirmation Container */
+.confirmation-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.confirmation-container header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.confirmation-details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.confirmation-details ul li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.confirmation-details p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Action Buttons */
+.action-buttons {
+    margin-top: 20px;
+}
+
+.action-buttons .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.action-buttons .btn-primary {
+    background-color: #ff9800;
+    color: white;
+}
+
+.action-buttons .btn-primary:hover {
+    background-color: #e68a00;
+}
+
+.action-buttons .btn-secondary {
+    background-color: #555;
+    color: white;
+}
+
+.action-buttons .btn-secondary:hover {
+    background-color: #777;
+}
+
+/* Footer */
+.footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+}

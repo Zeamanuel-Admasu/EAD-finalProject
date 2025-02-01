@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error - Our Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/notable.css}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+    <a href="/home" class="logo">እንብላ</a>
+        <div class="container">
+            
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/reservation">Reservation</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Error Section -->
+    <div class="error-section">
+        <div class="error-content">
+            <h1>No table with your specifics.</h1>
+            <p th:text="${errorMessage}">We couldn't find a table that matches your request. Please try again.</p>
+            <div class="links">
+                <a th:href="@{/reservation}" class="btn-primary">Make a Reservation</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Our Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+</html>

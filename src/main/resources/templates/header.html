@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+	<header>
+		<nav class="navbar">
+			<ul class="navbar-list">
+				<li><a href="/available-tables">Available Tables</a></li>
+				<li><a href="/my-reservations">My Reservations</a></li>
+				<li><a href="/contact">Contact</a></li>
+				<li><form th:action="@{/logout}" method="post"
+						style="display: inline;">
+						<button type="submit" class="btn btn-link nav-link"
+							style="border: none; background: none; color: white; cursor: pointer;">
+							Logout</button></li>
+				<li class="user-info"><span th:text="${userName}">User
+						Name</span><i class="fas fa-user"></i></li>
+			</ul>
+		</nav>
+
+	</header>
+
+</body>
+</html>

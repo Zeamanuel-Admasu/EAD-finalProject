@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/admin-dashboard.css}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+    <a href="/home" class="logo">እንብላ</a>
+        <div class="container">
+            
+            <ul class="nav-links">
+                <li><a th:href="@{/admin/tables}">Manage Tables</a></li>
+                <li><a th:href="@{/admin/reservations}">View Reservations</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard-container">
+        <h1>Admin Dashboard</h1>
+        <div class="dashboard-links">
+            <a class="dashboard-btn" th:href="@{/admin/tables}">Manage Tables</a>
+            <a class="dashboard-btn" th:href="@{/admin/reservations}">View Reservations</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Our Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+</html>

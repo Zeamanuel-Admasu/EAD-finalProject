@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reservation Confirmation</title>
+    <link rel="stylesheet" th:href="@{/css/confiramtion.css}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+        <a href="/home" class="logo">እንብላ</a>
+        <ul class="nav-links">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/reservation">Reservation</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <button type="submit" class="logout-btn">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Confirmation Section -->
+    <main class="confirmation-container">
+        <header>
+            <h1>Reservation Confirmed</h1>
+        </header>
+        <section class="confirmation-details">
+            <p>Your reservation has been confirmed! Here are the details:</p>
+            <ul>
+                <li>Reservation ID: <span th:text="${reservation.id}"></span></li>
+                <li>Reservation Type: <span th:text="${reservation.reservationType}"></span></li>
+                <li>Floor Number: <span th:text="${reservation.floorNumber}"></span></li>
+                <li>Number of Seats: <span th:text="${reservation.numberOfSeats}"></span></li>
+                <li>Reservation Date and Time: <span th:text="${reservation.reservationDateTime}"></span></li>
+            </ul>
+            <p>Thank you for dining with us!</p>
+        </section>
+
+        <!-- Action Buttons -->
+        <section class="action-buttons">
+            <a th:href="@{/user/dashboard}" class="btn btn-primary">Go to Dashboard</a>
+            <a th:href="@{/reservation}" class="btn btn-secondary">Make Another Reservation</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Our Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+</html>

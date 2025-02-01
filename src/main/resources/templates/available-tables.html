@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tables</title>
+   <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="~{header :: header}"></div>
+<div class="content">
+<h1>Tables</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Table ID</th>
+                <th>Number of Seats</th>
+                <th>Type</th>
+                <th>Floor</th>
+                <th>Status</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="table : ${availableTables}">
+                <td th:text="${table.id}"></td>
+                <td th:text="${table.numberOfSeats}"></td>
+                <td th:text="${table.tableType}"></td>
+                <td th:text="${table.floorNumber}"></td>
+                <td th:text="${table.isReserved} ? 'Reserved' : 'Available'"></td>
+                 
+        </tr>
+            </tr>
+        </tbody>
+    </table></div>
+    <form th:action="@{/logout}" method="post" style="display: inline;">
+    <button type="submit" class="btn btn-link nav-link" style="border: none; background: none; color: white; cursor: pointer;">
+        Logout
+    </button>
+</form>
+    
+    <footer> © 2024 Our Restaurant. All rights reserved. </footer>
+</body>
+</html>

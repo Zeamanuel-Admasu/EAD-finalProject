@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="am">
+<head>
+    <title>Welcome to Our Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+<nav class="main-nav">
+<a href="#" class="logo">እንብላ</a>
+    <div class="container">
+        <!-- Logo -->
+        
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/business-types">Business Types</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/resources">Resources</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+    
+
+    <!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1>
+            <span class="orange">Welcome to Our</span> Restaurant Reservation
+        </h1>
+        <p>Your perfect dining experience awaits.</p>
+        <div class="hero-buttons">
+            <a th:href="@{/menu}" class="btn-primary">View Menu</a>
+            <a th:href="@{/reservation}" class="btn-secondary">Make a Reservation</a>
+        </div>
+    </div>
+    <svg class="hero-line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M0 100 Q50 0 100 100" stroke="white" stroke-width="3" fill="none" />
+    </svg>
+</section>
+
+
+
+    <!-- Reservation Types Section -->
+  <section class="reservation-types">
+    <div class="container">
+        <h2>
+    <span class="half-blue">Our</span> <span class="half-orange">Reservation</span> <span class="half-black"> Types</span>
+</h2>
+        <div class="carousel">
+            <button class="nav-button prev">❮</button>
+            <div class="card-container">
+                <!-- Romantic Reservation Card -->
+                <div class="card">
+                    <img src="/images/romantic.jpg" alt="Romantic Reservation">
+                    <h3>Romantic</h3>
+                    <p>Perfect for a romantic dinner. Enjoy intimate dining with a loved one.</p>
+                    <div class="card-details">
+                        <span class="price">$50</span>
+                        <span class="rating">⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- Business Reservation Card -->
+                <div class="card">
+                    <img src="/images/business.jpg" alt="Business Reservation">
+                    <h3>Business</h3>
+                    <p>Ideal for corporate meetings and professional gatherings.</p>
+                    <div class="card-details">
+                        <span class="price">$40</span>
+                        <span class="rating">⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- Family Reservation Card -->
+                <div class="card">
+                    <img src="/images/family.jpg" alt="Family Reservation">
+                    <h3>Family</h3>
+                    <p>Spacious seating arrangements for family dinners and celebrations.</p>
+                    <div class="card-details">
+                        <span class="price">$35</span>
+                        <span class="rating">⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- Outdoor Reservation Card -->
+                <div class="card">
+                    <img src="/images/outdoor.jpg" alt="Outdoor Reservation">
+                    <h3>Outdoor</h3>
+                    <p>Relax and dine under the stars in our open-air seating area.</p>
+                    <div class="card-details">
+                        <span class="price">$45</span>
+                        <span class="rating">⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+            </div>
+            <button class="nav-button next">❯</button>
+        </div>
+    </div>
+</section>
+
+
+<div class="video-container">
+        <video autoplay loop muted>
+            <source src="/images/table.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <!-- Login Options Section -->
+<section class="login-options">
+        <div class="container">
+            <h2>Login Options</h2>
+            <div class="login-buttons">
+                <form th:action="@{/login/user}" method="get">
+                    <button type="submit" class="btn-primary">Login as Customer</button>
+                </form>
+                <form th:action="@{/login/admin}" method="get">
+                    <button type="submit" class="btn-secondary">Login as Admin</button>
+                </form>
+            </div>
+            <p>New here? <a th:href="@{/signup}" class="signup-link">Sign up now.</a></p>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Our Restaurant. All rights reserved.</p>
+        </div>
+    </footer>
+    <script th:src="@{/js/scroll.js}"></script>
+    
+</body>
+</html>

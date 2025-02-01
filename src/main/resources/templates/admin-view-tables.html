@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Tables</title>
+    <link rel="stylesheet" th:href="@{/css/admin-table.css}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+    <a href="/home" class="logo">እንብላ</a>
+        <div class="container">
+            
+            <ul class="nav-links">
+                <li><a th:href="@{/admin/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/admin/reservations}">View Reservations</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="tables-container">
+        <h1>Manage Tables</h1>
+        <table class="tables">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Seats</th>
+                    <th>Floor</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="table : ${tables}">
+                    <td th:text="${table.id}"></td>
+                    <td th:text="${table.tableType}"></td>
+                    <td th:text="${table.numberOfSeats}"></td>
+                    <td th:text="${table.floorNumber}"></td>
+                    <td>
+                        <a th:href="@{/admin/tables/edit/{id}(id=${table.id})}" class="btn btn-edit">Edit</a>
+                        <form th:action="@{/admin/tables/delete/{id}(id=${table.id})}" method="post" style="display: inline;">
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            <button type="submit" class="btn btn-delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/admin/tables/add}" class="btn btn-add">Add New Table</a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Our Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+</html>
